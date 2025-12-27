@@ -1,4 +1,4 @@
-class HistoryRecord {
+export class HistoryRecord {
     constructor (countOfRecord,dateGenerate,records) {
         this.countOfRecord=countOfRecord
         this.dateGenerate=dateGenerate

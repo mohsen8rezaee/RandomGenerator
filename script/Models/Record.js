@@ -1,4 +1,4 @@
-class Record {
+export class Record {
     constructor (name, family , age , email) {
         this.name = name
         this.family=family
