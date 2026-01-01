@@ -46,7 +46,7 @@ domData.btnGenerate.addEventListener("click", () => {
   if (resultcode.length != 0) {
     const historyRecords = new HistoryRecord(
       resultcode.length,
-      Date.now(),
+      new Date(Date.now()).toLocaleDateString("en-CA"),
       resultcode
     );
     history.push(historyRecords);

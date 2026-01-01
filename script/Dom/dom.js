@@ -185,7 +185,9 @@ function showHistoryItems(item) {
   calenderIcon.classList.add("fa-sharp");
   calenderIcon.classList.add("fa-regular");
   calenderIcon.classList.add("fa-calendar");
-
+  console.log(item);
+  
+  calenderIcon.title=item.dateGenerate;
   division.appendChild(titleList);
   division.appendChild(calenderIcon);
 
@@ -215,6 +217,7 @@ function displayTable() {
   const noteBox = document.getElementById("noteBox");
   noteBox.classList.add("d-none");
 }
+
 
 const dateBox = document.getElementById("date-clock");
 const headerTitle = document.getElementById("header");

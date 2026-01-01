@@ -12,8 +12,6 @@
   </head>
   <body>
     <div class="row w-100 container">
-      
-
       <!-- left -->
       <div class="column w-15 glass-card history-menu">
         <div class="histoy-menu-content">
@@ -25,7 +23,16 @@
                 type="number"
                 name="length-of-page"
                 id="length-page-input"
+                list="amounts"
               />
+              <datalist id="amounts">
+                <option value="20"></option>
+                <option value="14"></option>
+                <option value="50"></option>
+                <option value="100"></option>
+                <option value="200"></option>
+              </datalist>
+
               <br />
               <input
                 type="number"
@@ -96,7 +103,6 @@
           <p id="header">Random Record Generator</p>
         </div>
         <div class="glass-card flex-1 table-box" id="table-box">
-
           <table class="table-record scroll" id="table-records">
             <tr>
               <th class="name">Name</th>
@@ -104,7 +110,6 @@
               <th class="email">Email</th>
               <th class="age">Age</th>
             </tr>
-            
           </table>
 
           <div class="pagination" id="parent-pagination">
@@ -112,19 +117,18 @@
             <span class="page-id">2</span>
             -->
           </div>
-
         </div>
-        <div class="note-list glass-card flex-1 table-box scroll d-none" id="noteBox">
-        
-           <div class="pagination" id="parent-pagination-note">
-
-           </div>
+        <div
+          class="note-list glass-card flex-1 table-box scroll d-none"
+          id="noteBox"
+        >
+          <div class="pagination" id="parent-pagination-note"></div>
         </div>
       </div>
       <!-- right -->
       <div class="column w-15 filter-column">
         <button class="glass-card btn btn-detail" value="table" id="btn-detail">
-          Display Mode 
+          Display Mode
         </button>
         <div class="glass-card filteer-name">
           <p class="filter-title">Name</p>
