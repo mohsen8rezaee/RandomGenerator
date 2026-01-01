@@ -12,6 +12,8 @@
   </head>
   <body>
     <div class="row w-100 container">
+      
+
       <!-- left -->
       <div class="column w-15 glass-card history-menu">
         <div class="histoy-menu-content">
@@ -19,19 +21,26 @@
             <div class="title">
               <h3>Random Generator</h3>
               <hr class="hr" />
-              <div class="run"></div>
+              <input
+                type="number"
+                name="length-of-page"
+                id="length-page-input"
+              />
+              <br />
               <input
                 type="number"
                 name="length-record"
                 id="length-record-input"
+                placeholder="optional"
               />
+
               <button class="btn" id="btn-generate">Generate</button>
             </div>
             <hr class="hr" />
           </div>
-          <div class="history-body">
+          <div class="history-body" id="history-body">
             <h4>History</h4>
-            <hr class="hr" />
+            <!-- <hr class="hr" />
             <div class="row records">
               <div class="history-name">Records 1</div>
               <i class="fa-sharp fa-regular fa-calendar"></i>
@@ -76,19 +85,25 @@
             <div class="row records">
               <div class="history-name">Records 1</div>
               <i class="fa-sharp fa-regular fa-calendar"></i>
-            </div>
+            </div> -->
           </div>
         </div>
-        <div class="date">21 : 18</div>
+        <div class="date" id="date-clock"></div>
       </div>
       <!-- center -->
       <div class="column w-70">
         <div class="glass-card header-title">
-          <p>Generated n record at time</p>
+          <p id="header">Random Record Generator</p>
         </div>
-        <div class="glass-card flex-1 table-box">
-          <table class="table-record">
+        <div class="glass-card flex-1 table-box" id="table-box">
+          <table class="table-record scroll" id="table-records">
             <tr>
+              <th class="name">Name</th>
+              <th class="family">Family</th>
+              <th class="email">Email</th>
+              <th class="age">Age</th>
+            </tr>
+            <!-- <tr>
               <th class="name">Name</th>
               <th class="family">Family</th>
               <th class="email">Email</th>
@@ -105,40 +120,101 @@
               <td class="family">Anders</td>
               <td class="email">mohsen8rezaee@gmail.com</td>
               <td class="age">70</td>
-            </tr>
+            </tr> -->
           </table>
+          <div class="pagination" id="parent-pagination">
+            <!-- <span class="page-id">1</span>
+            <span class="page-id">2</span>
+            <span class="page-id">3</span>
+            <span class="page-id">4</span>
+            <span class="page-id">5</span>
+            <span class="page-id">6</span> -->
+          </div>
+        </div>
+        <div class="note-list glass-card flex-1 table-box scroll d-none" id="noteBox">
+          <div class="node-item">
+            <p class="note-fild">name :</p>
+            <p class="note-fild">family :</p>
+            <p class="note-fild">age :</p>
+            <p class="note-fild">email :</p>
+            <p>
+              --------------------------------------------------------------------------------------------
+            </p>
+          </div>
+          <div class="node-item">
+            <p class="note-fild">name :</p>
+            <p class="note-fild">family :</p>
+            <p class="note-fild">age :</p>
+            <p class="note-fild">email :</p>
+            <p>
+              --------------------------------------------------------------------------------------------
+            </p>
+          </div>
+          <div class="node-item">
+            <p class="note-fild">name :</p>
+            <p class="note-fild">family :</p>
+            <p class="note-fild">age :</p>
+            <p class="note-fild">email :</p>
+            <p>
+              --------------------------------------------------------------------------------------------
+            </p>
+          </div>
+          <div class="node-item">
+            <p class="note-fild">name :</p>
+            <p class="note-fild">family :</p>
+            <p class="note-fild">age :</p>
+            <p class="note-fild">email :</p>
+            <p>
+              --------------------------------------------------------------------------------------------
+            </p>
+          </div>
+           <div class="pagination" id="parent-pagination-note">
+
+           </div>
         </div>
       </div>
       <!-- right -->
       <div class="column w-15 filter-column">
+        <button class="glass-card btn btn-detail" value="table" id="btn-detail">
+          <!-- <p class="btn-text"></p> -->
+          Note
+          <!-- <a href="" class="btn btn-detail-table">Detail</a>   -->
+          <!-- <button class="btn">Detail</button> -->
+        </button>
         <div class="glass-card filteer-name">
           <p class="filter-title">Name</p>
           <hr class="hr" />
           <div class="row records">
             <div class="history-name">Uppercase</div>
-            <input type="checkbox" class="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              class="checkbox"
+              name=""
+              id="UpperCase_Name"
+            />
           </div>
           <div class="row records">
             <div class="history-name">Lowercase</div>
-            <input type="checkbox" class="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              class="checkbox"
+              name=""
+              id="LowerCase_Name"
+            />
           </div>
           <div class="row records">
             <div class="history-name">Numbers</div>
-            <input type="checkbox" class="checkbox" name="" id="" />
+            <input type="checkbox" class="checkbox" name="" id="Numbers_Name" />
           </div>
           <div class="row records">
             <div class="history-name">sign</div>
-            <input type="checkbox" class="checkbox" name="" id="" />
+            <input type="checkbox" class="checkbox" name="" id="Signs_Name" />
           </div>
           <hr class="hr" />
 
           <div class="length-char">
-            <input type="number" name="" id="" placeholder="Max" /><input
-              type="number"
-              name=""
-              placeholder="Min"
-              id=""
-            />
+            <input type="number" name="" id="MaxCharName" placeholder="Max" />
+            <input type="number" name="" placeholder="Min" id="MinCharName" />
           </div>
         </div>
         <div class="glass-card filteer-family">
@@ -147,29 +223,40 @@
 
           <div class="row records">
             <div class="history-name">Uppercase</div>
-            <input type="checkbox" class="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              class="checkbox"
+              name=""
+              id="UpperCase_Family"
+            />
           </div>
           <div class="row records">
             <div class="history-name">Lowercase</div>
-            <input type="checkbox" class="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              class="checkbox"
+              name=""
+              id="LowerCase_Family"
+            />
           </div>
           <div class="row records">
             <div class="history-name">Numbers</div>
-            <input type="checkbox" class="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              class="checkbox"
+              name=""
+              id="Numbers_Family"
+            />
           </div>
           <div class="row records">
             <div class="history-name">sign</div>
-            <input type="checkbox" class="checkbox" name="" id="" />
+            <input type="checkbox" class="checkbox" name="" id="Signs_Family" />
           </div>
           <hr class="hr" />
 
           <div class="length-char">
-            <input type="number" name="" id="" placeholder="Max" /><input
-              type="number"
-              name=""
-              placeholder="Min"
-              id=""
-            />
+            <input type="number" name="" id="MaxCharFamily" placeholder="Max" />
+            <input type="number" name="" placeholder="Min" id="MinCharFamily" />
           </div>
         </div>
 
@@ -179,35 +266,41 @@
 
           <div class="row records">
             <div class="history-name">Uppercase</div>
-            <input type="checkbox" class="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              class="checkbox"
+              name=""
+              id="UpperCase_Email"
+            />
           </div>
           <div class="row records">
             <div class="history-name">Lowercase</div>
-            <input type="checkbox" class="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              class="checkbox"
+              name=""
+              id="LowerCase_Email"
+            />
           </div>
           <div class="row records">
             <div class="history-name">Numbers</div>
-            <input type="checkbox" class="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              class="checkbox"
+              name=""
+              id="Numbers_Email"
+            />
           </div>
           <div class="row records">
             <div class="history-name">sign</div>
-            <input type="checkbox" class="checkbox" name="" id="" />
+            <input type="checkbox" class="checkbox" name="" id="Signs_Email" />
           </div>
           <hr class="hr" />
 
           <div class="length-char">
-            <input type="number" name="" id="" placeholder="Max" /><input
-              type="number"
-              name=""
-              placeholder="Min"
-              id=""
-            />
+            <input type="number" name="" id="MaxCharEmail" placeholder="Max" />
+            <input type="number" name="" placeholder="Min" id="MinCharEmail" />
           </div>
-        </div>
-        <div class="glass-card btn btn-detail" id="btn-detail">
-          Detail
-          <!-- <a href="" class="btn btn-detail-table">Detail</a>   -->
-          <!-- <button class="btn">Detail</button> -->
         </div>
       </div>
     </div>

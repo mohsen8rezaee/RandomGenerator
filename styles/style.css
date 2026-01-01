@@ -13,6 +13,16 @@ body {
   align-items: top;
   /* flex-wrap: wrap; */
 }
+.scroll::-webkit-scrollbar {
+  width: 8px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  
+}
+.scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
 .container {
   padding: 16px;
   display: flex;
@@ -117,6 +127,17 @@ h3 {
   margin-top: 16px;
   margin-bottom: 8px;
 }
+#length-page-input {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgb(38, 112, 233);
+  width: 90%;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
 .history-header {
   display: flex;
   flex-direction: column;
@@ -170,7 +191,13 @@ td {
 }
 .table-box {
   padding: 8px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: center; */
+  padding-bottom: 24px !important;
 }
+
 .filter-column {
   display: flex;
   flex-direction: column;
@@ -221,8 +248,12 @@ td {
 #btn-detail{
     height: 50px;
     border-radius: 16px !important;
+     
 }
 .btn-detail{
+    background-color: rgba(0, 0, 0, 0.4);
+    color: antiquewhite;
+    border: 1px solid antiquewhite !important;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -232,14 +263,55 @@ td {
 }
 .history-body .records:hover{
     border-left: 3px solid rgb(38, 112, 233);
-    
-
+}
+.scroll{
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
 }
 
+.modal-backdrop.active {
+  display: flex;
+}
 
+.modal {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  min-width: 300px;
+}
 
-
-
+.pagination{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  max-width: 50%;
+  overflow-x: auto;
+  margin: 0px auto;
+  
+}
+.pagination::-webkit-scrollbar {
+  width: 5px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  
+}
+.pagination::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+.d-none{
+  display: none;
+}
 
 
 

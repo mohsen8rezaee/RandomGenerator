@@ -1,5 +1,9 @@
 const btnGenerate = document.getElementById("btn-generate");
 //-----------name-------------
+function paginationCount() {
+  const len = Number(document.getElementById("length-page-input").value);
+  return len;
+}
 
 function getFilterName() {
   const isUpperCaseName = document.getElementById("UpperCase_Name").checked;
@@ -66,9 +70,15 @@ function getLengthRecord() {
 }
 //--------------------------------------------------------------------------------------------
 function showRecords(list) {
+  // const tableBox = document.getElementById("table-box");
+  // tableBox.innerHTML = "";
+  // const tablebody = document.createElement("table");
+  // tablebody.classList.add("table-record");
+  // tablebody.classList.add("scroll");
+  // tablebody.id = "scroll";
   const tablebody = document.getElementById("table-records");
   tablebody.innerHTML = "";
-
+  // tableBox.appendChild(tablebody);
   const tr = document.createElement("tr");
 
   const thName = document.createElement("th");
@@ -103,13 +113,11 @@ function showRecords(list) {
     const tdFamily = document.createElement("td");
     tdFamily.textContent = row.family.join("");
     tdFamily.classList.add("family");
-
     tr.appendChild(tdFamily);
 
     const tdEmail = document.createElement("td");
     tdEmail.textContent = row.email.join("");
     tdEmail.classList.add("email");
-
     tr.appendChild(tdEmail);
 
     const tdAge = document.createElement("td");
@@ -120,6 +128,7 @@ function showRecords(list) {
 
     tablebody.appendChild(tr);
   });
+  // tableBox.appendChild(tablebody)
 }
 function showHistoryItems(item) {
   const historyBody = document.getElementById("history-body");
@@ -144,9 +153,62 @@ function showHistoryItems(item) {
   historyBody.appendChild(hr);
   historyBody.appendChild(division);
 }
-export const dateBox = document.getElementById("date-clock")
+const parentPagination = document.getElementById("parent-pagination");
+function pageLink(id) {
+  const linkBox = document.getElementById("parent-pagination");
+  // const tableBox = document.getElementById("table-box");
+  // const linkBox = document.createElement("div");
+  // linkBox.id = "parent-pagination";
+  // linkBox.classList.add("pagination");
+
+  const linkEL = document.createElement("span");
+  linkEL.textContent = id;
+  linkEL.classList.add("page-id");
+
+  linkBox.appendChild(linkEL);
+  // tableBox.appendChild(linkBox);
+}
+const btnDisplay = document.getElementById("btn-detail");
+function displayNote() {
+  const tableBox = document.getElementById("table-box");
+  tableBox.classList.add("d-none");
+}
+function displayTable() {
+  const noteBox = document.getElementById("noteBox");
+  noteBox.classList.add("d-none");
+}
+function showRecords2(list) {
+  list.forEach((row) => {
+    const nodeitem = document.createElement("div");
+    nodeitem.classList.add("node-item");
+
+    const ptag = document.createElement("p");
+    ptag.classList.add("note-fild");
+    ptag.textContent = row.name.join("");
+
+    const ptag1 = document.createElement("p");
+    ptag1.classList.add("note-fild");
+    ptag1.textContent = row.family.join("");
+
+    const ptag2 = document.createElement("p");
+    ptag2.classList.add("note-fild");
+    ptag2.textContent = row.age.join("");
+
+    const ptag3 = document.createElement("p");
+    ptag3.classList.add("note-fild");
+    ptag3.textContent = row.email.join("");
+
+    nodeitem.appendChild(ptag)
+    nodeitem.appendChild(ptag1)
+    nodeitem.appendChild(ptag2)
+    nodeitem.appendChild(ptag3)
+  });
+}
+const dateBox = document.getElementById("date-clock");
+const headerTitle = document.getElementById("header");
 
 export const domData = {
+  btnDisplay,
   getEmailFilter,
   getFilterFamily,
   getFilterName,
@@ -154,6 +216,11 @@ export const domData = {
   btnGenerate,
   showRecords,
   showHistoryItems,
-  dateBox
-
+  dateBox,
+  headerTitle,
+  paginationCount,
+  parentPagination,
+  pageLink,
+  displayTable,
+  displayNote,
 };
