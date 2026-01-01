@@ -80,13 +80,7 @@ body {
   display: flex;
   flex-direction: row;
 }
-/* .history-menu{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
-    height: 100%;
-} */
+
 .date {
   display: flex;
   flex-direction: column;
@@ -251,9 +245,9 @@ td {
      
 }
 .btn-detail{
-    background-color: rgba(0, 0, 0, 0.4);
-    color: antiquewhite;
-    border: 1px solid antiquewhite !important;
+    /* background-color: rgba(0, 0, 0, 0.4); */
+    color: rgb(38, 112, 233);
+    border: 1px solid rgb(38, 112, 233) !important;
     display: flex;
     flex-direction: row;
     justify-content: center;
