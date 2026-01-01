@@ -104,7 +104,7 @@ function sendToDom(resultcode, pageID, pageSize) {
     console.log("list :");
     console.log(list);
     
-    domData.showDisplayNote(list)
+    domData.showDisplayNote(resultcode)
     const lengthPageID = Math.ceil(resultcode.length / pageSize);
     domData.clearLink();
     for (let i = 0; i < lengthPageID; i++) {

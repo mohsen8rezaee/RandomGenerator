@@ -278,18 +278,21 @@ td {
 }
 
 .pagination{
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 4px;
-  max-width: 50%;
+  gap: 4px; */
+  max-width: 50vw;
   overflow-x: auto;
   margin: 0px auto;
   
 }
+.pagination span{
+  margin-left: 4px;
+}
 .pagination::-webkit-scrollbar {
-  width: 5px;
+  /* width: 5px; */
   background: rgba(255, 255, 255, 0.6);
   border-radius: 10px;
   
