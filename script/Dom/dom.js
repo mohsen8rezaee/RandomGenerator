@@ -4,15 +4,15 @@ function paginationCount() {
   const len = Number(document.getElementById("length-page-input").value);
   return len;
 }
-
+//----------Name----------
 function getFilterName() {
   const isUpperCaseName = document.getElementById("UpperCase_Name").checked;
   const isLowerCaseName = document.getElementById("LowerCase_Name").checked;
   const isNumbersName = document.getElementById("Numbers_Name").checked;
   const isSignsName = document.getElementById("Signs_Name").checked;
 
-  const MaxCharName = Number(document.getElementById("MaxCharName").value);
-  const MinCharName = Number(document.getElementById("MinCharName").value);
+  const MaxCharName = Number(document.getElementById("MaxCharName").value)||8;
+  const MinCharName = Number(document.getElementById("MinCharName").value)||5;
 
   const filterName = [
     isUpperCaseName,
@@ -31,8 +31,8 @@ function getFilterFamily() {
   const isNumbersFamily = document.getElementById("Numbers_Family").checked;
   const isSignsFamily = document.getElementById("Signs_Family").checked;
 
-  const MaxCharFamily = Number(document.getElementById("MaxCharFamily").value);
-  const MinCharFamily = Number(document.getElementById("MinCharFamily").value);
+  const MaxCharFamily = Number(document.getElementById("MaxCharFamily").value)||8;
+  const MinCharFamily = Number(document.getElementById("MinCharFamily").value)||5;
 
   const filterFamily = [
     isUpperCaseFamily,
@@ -51,8 +51,8 @@ function getEmailFilter() {
   const isNumbersEmail = document.getElementById("Numbers_Email").checked;
   const isSignsEmail = document.getElementById("Signs_Email").checked;
 
-  const MaxCharEmail = Number(document.getElementById("MaxCharEmail").value);
-  const MinCharEmail = Number(document.getElementById("MinCharEmail").value);
+  const MaxCharEmail = Number(document.getElementById("MaxCharEmail").value)||32;
+  const MinCharEmail = Number(document.getElementById("MinCharEmail").value)||16;
 
   const filterEmail = [
     isUpperCaseEmail,
@@ -130,6 +130,45 @@ function showRecords(list) {
   });
   // tableBox.appendChild(tablebody)
 }
+function showDisplayNote(list) {
+  console.log("showDisplayNote run ");
+  console.log(list);
+  
+  
+  const noteBox = document.getElementById("noteBox");
+  noteBox.innerHTML = "";
+  list.forEach((row) => {
+    const nodeItem = document.createElement("div");
+    nodeItem.classList.add("node-item");
+
+    const pName = document.createElement("p");
+    pName.classList.add("note-fild");
+    pName.textContent = `Name : ${row.name.join("")}`;
+    nodeItem.appendChild(pName);
+
+    const pFamily = document.createElement("p");
+    pFamily.classList.add("note-fild");
+    pFamily.textContent = `Family : ${row.family.join("")}`;
+    nodeItem.appendChild(pFamily);
+
+    const pAge = document.createElement("p");
+    pAge.classList.add("note-fild");
+    pAge.textContent = `Age : ${row.age.join("")}`;
+    nodeItem.appendChild(pAge);
+
+    const pEmail = document.createElement("p");
+    pEmail.classList.add("note-fild");
+    pEmail.textContent = `Email : ${row.email.join("")}`;
+    nodeItem.appendChild(pEmail);
+
+    const pline = document.createElement("p");
+    pline.textContent =
+      "----------------------------------------------------------------------------------------------------------------------";
+    nodeItem.appendChild(pline);
+
+    noteBox.appendChild(nodeItem);
+  });
+}
 function showHistoryItems(item) {
   const historyBody = document.getElementById("history-body");
 
@@ -165,7 +204,7 @@ function pageLink(id) {
 }
 function clearLink() {
   const linkBox = document.getElementById("parent-pagination");
-  linkBox.innerHTML=""
+  linkBox.innerHTML = "";
 }
 const btnDisplay = document.getElementById("btn-detail");
 function displayNote() {
@@ -196,5 +235,6 @@ export const domData = {
   pageLink,
   displayTable,
   displayNote,
-  clearLink
+  clearLink,
+  showDisplayNote,
 };

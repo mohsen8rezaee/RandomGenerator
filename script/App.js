@@ -17,7 +17,19 @@ let history = [];
 let list = [];
 let pageID = 1;
 let psize = 0;
+let isNote = false;
 
+domData.btnDisplay.addEventListener("click", () => {
+  isNote = !isNote;
+  if (isNote) {
+    document.getElementById("noteBox").classList.remove("d-none");
+    document.getElementById("table-box").classList.add("d-none");
+  } else {
+    document.getElementById("noteBox").classList.add("d-none");
+    document.getElementById("table-box").classList.remove("d-none");
+  }
+  sendToDom(resultcode,pageID,psize)
+});
 
 domData.btnGenerate.addEventListener("click", () => {
   const start = performance.now();
@@ -29,8 +41,7 @@ domData.btnGenerate.addEventListener("click", () => {
   const getFilterEmail = [...domData.getEmailFilter()];
   let length = domData.getLengthRecord();
   if (length == 0) {
-    length = Math.floor(Math.random()*9501)+500;
-    
+    length = Math.floor(Math.random() * 9501) + 500;
   }
   if (resultcode.length != 0) {
     const historyRecords = new HistoryRecord(
@@ -73,7 +84,6 @@ domData.btnGenerate.addEventListener("click", () => {
     resultcode.push(record);
   }
 
-
   sendToDom(resultcode, pageID, pageSize);
   const end = performance.now();
   const shoWTime = end - start;
@@ -81,18 +91,26 @@ domData.btnGenerate.addEventListener("click", () => {
 });
 // send dom----------------
 function sendToDom(resultcode, pageID, pageSize) {
-  list = [...getPage(resultcode, pageID, pageSize)];
-  domData.showRecords(list);
-  const lengthPageID = Math.ceil(resultcode.length / pageSize);
-  domData.clearLink();
-  for (let i = 0; i < lengthPageID; i++) {
-    domData.pageLink(i + 1);
-    console.log(i);
+  if (!isNote) {
+    list = [...getPage(resultcode, pageID, pageSize)];
+    domData.showRecords(list);
+    const lengthPageID = Math.ceil(resultcode.length / pageSize);
+    domData.clearLink();
+    for (let i = 0; i < lengthPageID; i++) {
+      domData.pageLink(i + 1);
+    }
+  } else {
+    list = [...getPage(resultcode, pageID, pageSize)];
+    console.log("list :");
+    console.log(list);
     
+    domData.showDisplayNote(list)
+    const lengthPageID = Math.ceil(resultcode.length / pageSize);
+    domData.clearLink();
+    for (let i = 0; i < lengthPageID; i++) {
+      domData.pageLink(i + 1);
+    }
   }
-  // if (!flagGeneratePageID) {
-  // }
-  // flagGeneratePageID = true;
 }
 // pagination------------
 domData.parentPagination.addEventListener("click", (pageTag) => {
