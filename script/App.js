@@ -5,11 +5,13 @@ import { domData } from "./Dom/dom.js";
 import { CreateDate } from "./Utilities/dateTime.js";
 import { getPage } from "./Utilities/paginationController.js";
 
+//time
 document.addEventListener("DOMContentLoaded", () => {
   CreateDate();
   setInterval(CreateDate, 1000);
 });
-let flagGenerate = false;
+
+let flagGeneratePageID = false;
 let resultcode = [];
 let history = [];
 let list = [];
@@ -25,8 +27,11 @@ domData.btnGenerate.addEventListener("click", () => {
   const getFilterName = [...domData.getFilterName()];
   const getFilterFamily = [...domData.getFilterFamily()];
   const getFilterEmail = [...domData.getEmailFilter()];
-  length = domData.getLengthRecord();
-
+  let length = domData.getLengthRecord();
+  if (length == 0) {
+    length = Math.floor(Math.random()*9501)+500;
+    
+  }
   if (resultcode.length != 0) {
     const historyRecords = new HistoryRecord(
       resultcode.length,
@@ -67,61 +72,33 @@ domData.btnGenerate.addEventListener("click", () => {
 
     resultcode.push(record);
   }
-  // const list = [...getPage(resultcode, pageID, pageSize)];
 
-  // domData.showRecords(list);
-  // if (domData.btnDisplay.textContent == Detail) {
-  //   domData.displayTable()
-  //   sendToDom(resultcode, pageID, pageSize);
-
-  // }else{
-  //   domData.displayNote()
-  //   sendToDom2(resultcode,pageID,pageSize)
-  // }
 
   sendToDom(resultcode, pageID, pageSize);
   const end = performance.now();
   const shoWTime = end - start;
   domData.headerTitle.textContent = `Generated ${length} record at ${shoWTime}`;
 });
+// send dom----------------
 function sendToDom(resultcode, pageID, pageSize) {
   list = [...getPage(resultcode, pageID, pageSize)];
   domData.showRecords(list);
-  if (!flagGenerate) {
-    const lengthPageID = Math.ceil(resultcode.length / pageSize);
-    for (let i = 0; i < lengthPageID; i++) {
-      domData.pageLink(i + 1);
-    }
+  const lengthPageID = Math.ceil(resultcode.length / pageSize);
+  domData.clearLink();
+  for (let i = 0; i < lengthPageID; i++) {
+    domData.pageLink(i + 1);
+    console.log(i);
+    
   }
-  flagGenerate = true;
+  // if (!flagGeneratePageID) {
+  // }
+  // flagGeneratePageID = true;
 }
-// function sendToDom2(resultcode, pageID, pageSize) {
-
-//   list = [...getPage(resultcode, pageID, pageSize)];
-//   domData.showRecords2(list);
-//   if (!flagGenerate) {
-//     const lengthPageID = Math.ceil(resultcode.length / pageSize);
-//     for (let i = 0; i < lengthPageID; i++) {
-//       domData.pageLink(i + 1);
-//     }
-//   }
-//   flagGenerate = true
-// }
+// pagination------------
 domData.parentPagination.addEventListener("click", (pageTag) => {
   if (!pageTag.target.classList.contains("page-id")) return;
   pageID = Number(pageTag.target.textContent);
   if (isNaN(pageID)) return;
-  console.log(pageID);
 
   sendToDom(resultcode, pageID, psize);
 });
-// domData.btnDisplay.addEventListener("click",()=>{
-
-//   if (domData.btnDisplay.textContent == "Detail") {
-//     domData.btnDisplay.textContent = "table"
-//       console.log("event");
-
-//   }else{
-//     domData.btnDisplay.textContent="Detail"
-//   }
-// })

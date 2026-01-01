@@ -156,17 +156,16 @@ function showHistoryItems(item) {
 const parentPagination = document.getElementById("parent-pagination");
 function pageLink(id) {
   const linkBox = document.getElementById("parent-pagination");
-  // const tableBox = document.getElementById("table-box");
-  // const linkBox = document.createElement("div");
-  // linkBox.id = "parent-pagination";
-  // linkBox.classList.add("pagination");
-
   const linkEL = document.createElement("span");
   linkEL.textContent = id;
   linkEL.classList.add("page-id");
 
   linkBox.appendChild(linkEL);
   // tableBox.appendChild(linkBox);
+}
+function clearLink() {
+  const linkBox = document.getElementById("parent-pagination");
+  linkBox.innerHTML=""
 }
 const btnDisplay = document.getElementById("btn-detail");
 function displayNote() {
@@ -177,33 +176,7 @@ function displayTable() {
   const noteBox = document.getElementById("noteBox");
   noteBox.classList.add("d-none");
 }
-function showRecords2(list) {
-  list.forEach((row) => {
-    const nodeitem = document.createElement("div");
-    nodeitem.classList.add("node-item");
 
-    const ptag = document.createElement("p");
-    ptag.classList.add("note-fild");
-    ptag.textContent = row.name.join("");
-
-    const ptag1 = document.createElement("p");
-    ptag1.classList.add("note-fild");
-    ptag1.textContent = row.family.join("");
-
-    const ptag2 = document.createElement("p");
-    ptag2.classList.add("note-fild");
-    ptag2.textContent = row.age.join("");
-
-    const ptag3 = document.createElement("p");
-    ptag3.classList.add("note-fild");
-    ptag3.textContent = row.email.join("");
-
-    nodeitem.appendChild(ptag)
-    nodeitem.appendChild(ptag1)
-    nodeitem.appendChild(ptag2)
-    nodeitem.appendChild(ptag3)
-  });
-}
 const dateBox = document.getElementById("date-clock");
 const headerTitle = document.getElementById("header");
 
@@ -223,4 +196,5 @@ export const domData = {
   pageLink,
   displayTable,
   displayNote,
+  clearLink
 };
