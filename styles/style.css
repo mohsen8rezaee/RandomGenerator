@@ -294,17 +294,21 @@ td {
 .pagination::-webkit-scrollbar {
   /* width: 5px; */
   background: rgba(255, 255, 255, 0.6);
-  border-radius: 10px;
+  /* border-radius: 10px; */
+  margin-right: 12px;
   
 }
 .pagination::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 .d-none{
   display: none;
 }
-
+.note-list{
+  min-height: 83vh;
+  border-radius: 0px !important;
+}
 
 
 
